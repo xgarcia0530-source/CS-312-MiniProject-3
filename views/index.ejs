@@ -1,0 +1,60 @@
+<%- include("partials/header") %>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card shadow-sm border-0 sticky-top" style="top: 20px;">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">Create New Post</h2>
+        <form action="/posts" method="POST">
+          <div class="mb-3">
+            <label for="author" class="form-label">Author Name</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="e.g. Xavier" required>
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Post Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Topic title" required>
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Write your post here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-info w-100">Publish Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <h2 class="h4 mb-3">Recent Posts (<%= posts.length %>)</h2>
+
+    <% if (posts.length === 0) { %>
+      <div class="alert alert-secondary text-center py-4" role="alert">
+        No posts yet. Use the form on the left to create your first entry!
+      </div>
+    <% } else { %>
+      <div class="d-flex flex-column gap-3">
+        <% posts.forEach(post => { %>
+          <article class="card shadow-sm border-0">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0 text-dark"><%= post.title %></h3>
+                <small class="text-muted"><%= post.createdAt %></small>
+              </div>
+              <h6 class="card-subtitle text-muted mb-3 fs-7">By <%= post.author %></h6>
+              <p class="card-text text-secondary" style="white-space: pre-line;"><%= post.content %></p>
+              
+              <div class="d-flex gap-2 justify-content-end border-top pt-2 mt-3">
+                <a href="/posts/<%= post.blog_id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <form action="/posts/<%= post.blog_id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this post?');">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Blog</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-light">
+    
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Character Blog</a>
+            <div>
+                <% if (currentUserId) { %>
+                    <span class="text-white me-3">Welcome, <%= currentUserName %>!</span>
+                    <a href="/signout" class="btn btn-outline-light btn-sm">Sign Out</a>
+                <% } else { %>
+                    <a href="/signin" class="btn btn-outline-light me-2">Sign In</a>
+                    <a href="/signup" class="btn btn-primary">Sign Up</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rest of your homepage contents (Create Post form and Feed) go here -->

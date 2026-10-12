@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+    <div class="card shadow p-4 w-100" style="max-width: 400px;">
+        <h2 class="text-center mb-4">Create Account</h2>
+        <form action="/signup" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="user_id" class="form-label">User ID</label>
+                <input type="text" class="form-control" id="user_id" name="user_id" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100 mb-3">Sign Up</button>
+        </form>
+        <div class="text-center">
+            <p class="mb-0">Already have an account? <a href="/signin">Sign in</a></p>
+            <a href="/" class="text-decoration-none mt-2 d-inline-block">&larr; Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
